@@ -54,4 +54,15 @@ public class SFTPService {
         return true;
     }
 
+    public boolean uploadFile() throws JSchException, SftpException {
+        ChannelSftp channelSftp = setupJsch();
+        channelSftp.connect();
+
+        String localFile = "src/main/resources/data/sample.xlsx";
+        String remoteDir = "/sftp_user/dhanam/Rejected/sample.xlsx";
+
+        channelSftp.put(localFile, remoteDir);
+        channelSftp.exit();
+        return true;
+    }
 }

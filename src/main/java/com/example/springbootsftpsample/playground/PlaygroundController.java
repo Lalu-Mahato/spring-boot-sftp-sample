@@ -15,10 +15,15 @@ public class PlaygroundController {
     @Autowired
     private SFTPService sftpService;
 
-    @GetMapping
-    public String sayHi() throws JSchException, SftpException {
+    @GetMapping("/download")
+    public String downloadFile() throws JSchException, SftpException {
         sftpService.downloadFile();
-        return "Say Hi";
+        return "File Downloaded";
     }
 
+    @GetMapping("/upload")
+    public String uploadFile() throws JSchException, SftpException {
+        sftpService.uploadFile();
+        return "File Uploaded";
+    }
 }
