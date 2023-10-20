@@ -65,4 +65,17 @@ public class SFTPService {
         channelSftp.exit();
         return true;
     }
+
+    public boolean moveFile() throws JSchException, SftpException {
+        ChannelSftp channelSftp = setupJsch();
+        channelSftp.connect();
+
+        String sourcePath = "/sftp_user/dhanam/Unprocessed/sample.xlsx";
+        String destinationPath = "/sftp_user/dhanam/Processed/sample.xlsx";
+
+        channelSftp.rename(sourcePath, destinationPath);
+
+        channelSftp.exit();
+        return true;
+    }
 }

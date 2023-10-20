@@ -26,4 +26,10 @@ public class PlaygroundController {
         sftpService.uploadFile();
         return "File Uploaded";
     }
+
+    @GetMapping("/move")
+    public String moveFile() throws JSchException, SftpException {
+        sftpService.moveFile();
+        return "File Moved";
+    }
 }
